@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 class SharedButton extends Component {
+  
   submitEvent() {
     if (this.props.emitEvent) {
       this.props.emitEvent();
