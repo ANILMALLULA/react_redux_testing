@@ -39,7 +39,8 @@ describe("Testing fetch posts action", () => {
 
     return store.dispatch(fetchPosts()).then(() => {
       const newState = store.getState();
-      expect(newState.posts).toBe(expectedState);
+      console.log(newState);
+      expect(newState.posts.posts).toBe(expectedState);
     });
   });
 });
