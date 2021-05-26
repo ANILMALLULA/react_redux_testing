@@ -37,4 +37,17 @@ describe("App component", () => {
     const component = findBytestAttr(wrapper, "appComponent");
     expect(component.length).toBe(1);
   });
+
+  it("UpdateBtnVisibitlity method should update state as expected", () => {
+    const classInst = wrapper.instance();
+    classInst.UpdateBtnVisibitlity();
+    const newState = classInst.state.hideBtn;
+    expect(newState).toBe(true);
+  });
+
+  it("testFub_ret_value method should return val  as expected", () => {
+    const classInst = wrapper.instance();
+    const newState = classInst.testFub_ret_value(6);
+    expect(newState).toEqual(7);
+  });
 });

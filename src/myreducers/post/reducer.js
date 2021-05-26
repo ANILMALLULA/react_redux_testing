@@ -7,7 +7,10 @@ const initialState = {
 const postReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.GET_POSTS:
-      return action.payload;
+      return {
+        ...state,
+        posts: action.payload,
+      };
     default:
       return state;
   }

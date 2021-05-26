@@ -10,14 +10,35 @@ import { fetchPosts } from "./actions/index";
 class App extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      hideBtn: false,
+    };
   }
+
+  UpdateBtnVisibitlity = () => {
+    this.setState((prev) => {
+      return {
+        hideBtn: !prev.hideBtn,
+      };
+    });
+  };
+
+  testFub_ret_value = (num) => {
+    return num + 1;
+  };
 
   fetch = () => {
     this.props.fetchPosts();
+    this.UpdateBtnVisibitlity();
   };
 
   render() {
-    const { posts } = this.props;
+    const { data } = this.props;
+
+    const { hideBtn } = this.state;
+
+    const { posts } = data;
 
     const configButton = {
       buttonText: "Get posts",
@@ -29,11 +50,15 @@ class App extends Component {
         <Header />
         <section className='main'>
           <Headline header='Posts' desc='Click the button to render posts!' />
-          <SharedButton
-            buttonText={configButton.buttonText}
-            emitEvent={configButton.emitEvent}
-          />
-          {posts.length > 0 && (
+
+          {!hideBtn && (
+            <SharedButton
+              buttonText={configButton.buttonText}
+              emitEvent={configButton.emitEvent}
+            />
+          )}
+
+          {posts && (
             <div>
               {posts.map((post, index) => {
                 const { title, body } = post;
@@ -53,7 +78,7 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    posts: state.posts,
+    data: state.posts,
   };
 };
 
