@@ -18,9 +18,9 @@ export const checkProps = (component, expectedProps) => {
   return propError;
 };
 
-export const testStore = () => {
+export const testStore = (initialState) => {
   const createStoreWithMiddleware = applyMiddleware(...middlewares)(
     createStore
   );
-  return createStoreWithMiddleware(RootReducer);
+  return createStoreWithMiddleware(RootReducer, initialState);
 };
