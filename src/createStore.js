@@ -4,8 +4,4 @@ import RootReducer from "./myreducers/index";
 
 export const middlewares = [ReduxThunk];
 
-export const createStoreWithMiddleware = applyMiddleware(...middlewares)(
-  createStore
-);
-
-export const store = createStoreWithMiddleware(RootReducer);
+export const store = createStore(RootReducer, applyMiddleware(...middlewares));
